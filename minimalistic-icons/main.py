@@ -1,3 +1,7 @@
+"""
+    Minimalistic Icons
+"""
+
 import click
 
 @click.command()
