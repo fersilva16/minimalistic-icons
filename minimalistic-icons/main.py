@@ -4,10 +4,12 @@
 
 import click
 from PIL import Image, ImageColor
+import twemoji
 
 
 @click.command()
 @click.argument('color', type=click.STRING, required=True)
+@click.argument('emoji', type=click.STRING)
 @click.option('-s',
               '--size',
               type=click.INT,
@@ -20,11 +22,22 @@ from PIL import Image, ImageColor
               default='image.png',
               show_default=True,
               help='Output file')
-def main(color, size, file):
+def main(color, emoji, size, file):
     """Create a minimalistic icon"""
 
     image_color = ImageColor.getrgb(color)
-    image = Image.new('RGB', (size, size), image_color)
+
+    image = Image.new('RGBA', (size, size), image_color)
+
+    emoji_image_size = int(size / 4)
+
+    emoji_image = twemoji.get_emoji_image(emoji).resize(
+        (emoji_image_size, emoji_image_size))
+
+    emoji_image_offset = int(size / 2 - emoji_image_size / 2)
+
+    image.paste(emoji_image, (emoji_image_offset, emoji_image_offset),
+                mask=emoji_image.split()[3])
 
     image.save(file)
 

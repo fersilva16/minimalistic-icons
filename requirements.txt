@@ -1,4 +1,6 @@
 click==8.0.3
 Pillow==8.4.0
 pylint==2.11.1
+requests==2.26.0
+svglib==1.1.0
 yapf==0.31.0
