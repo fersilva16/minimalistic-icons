@@ -3,15 +3,24 @@
 """
 
 from io import BytesIO
-import requests
+import cairosvg
 from PIL import Image
-# from svglib.svglib import svg2png
+import requests
 
 
-def get_emoji_image(char):
+def get_emoji_image(char, size):
     """Get twemoji image"""
 
     request = requests.get(
-        f'https://twemoji.maxcdn.com/v/latest/72x72/{ord(char[0]):x}.png')
+        f'https://twemoji.maxcdn.com/v/latest/svg/{ord(char[0]):x}.svg')
 
-    return Image.open(BytesIO(request.content)).convert('RGBA')
+    out = BytesIO()
+
+    cairosvg.svg2png(
+        bytestring=request.content,
+        write_to=out,
+        output_width=size,
+        output_height=size,
+    )
+
+    return Image.open(out).convert('RGBA')

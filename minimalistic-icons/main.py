@@ -55,8 +55,7 @@ def main(color, emoji, width, height, file, circle):
 
     emoji_image_size = int(min(width, height) / 4)
 
-    emoji_image = twemoji.get_emoji_image(emoji).resize(
-        (emoji_image_size, emoji_image_size))
+    emoji_image = twemoji.get_emoji_image(emoji, emoji_image_size)
 
     image.paste(emoji_image, (int(width / 2 - emoji_image_size / 2),
                               int(height / 2 - emoji_image_size / 2)),

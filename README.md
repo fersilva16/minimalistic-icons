@@ -46,7 +46,7 @@ $ python3 minimalistic-icons/main.py "#d65e3a" 🐾 --file dog.png
 - [ ] Add an example icon in the README.
 - [ ] Add typings using [mypy](http://mypy-lang.org).
 - [ ] Add [setuptools](https://setuptools.pypa.io).
-- [ ] Get emoji as SVG for better resolution.
+- [x] Get emoji as SVG for better resolution.
 
 # Contribution
 Contributions are welcome, feel free to create a [Issue][new-issue-url] or a [Pull Request][new-pr-url]. Don't forget to give the project a star! Thanks!
