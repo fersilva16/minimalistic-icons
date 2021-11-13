@@ -10,33 +10,38 @@ import twemoji
 @click.command()
 @click.argument('color', type=click.STRING, required=True)
 @click.argument('emoji', type=click.STRING)
-@click.option('-s',
-              '--size',
+@click.option('-w',
+              '--width',
               type=click.INT,
               default=512,
               show_default=True,
-              help='The size of image.')
+              help='The width of image.')
+@click.option('-h',
+              '--height',
+              type=click.INT,
+              default=512,
+              show_default=True,
+              help='The height of image.')
 @click.option('-f',
               '--file',
               type=click.STRING,
               default='image.png',
               show_default=True,
               help='Output file')
-def main(color, emoji, size, file):
+def main(color, emoji, width, height, file):
     """Create a minimalistic icon"""
 
     image_color = ImageColor.getrgb(color)
 
-    image = Image.new('RGBA', (size, size), image_color)
+    image = Image.new('RGBA', (width, height), image_color)
 
-    emoji_image_size = int(size / 4)
+    emoji_image_size = int(min(width, height) / 4)
 
     emoji_image = twemoji.get_emoji_image(emoji).resize(
         (emoji_image_size, emoji_image_size))
 
-    emoji_image_offset = int(size / 2 - emoji_image_size / 2)
-
-    image.paste(emoji_image, (emoji_image_offset, emoji_image_offset),
+    image.paste(emoji_image, (int(width / 2 - emoji_image_size / 2),
+                              int(height / 2 - emoji_image_size / 2)),
                 mask=emoji_image.split()[3])
 
     image.save(file)
