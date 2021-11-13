@@ -2,7 +2,7 @@
 `minimalistic-icons` is a simple Command Line Interface for creating icons using [Twitter emojis](https://twemoji.twitter.com) and colored backgrounds, written using Python, [PIL](https://pillow.readthedocs.io) and [click](https://click.palletsprojects.com)!
 
 # How to install
-To clone and run, you'll [Git](https://git-scm.com), [Python v3.8](https://www.python.org) and [PIP](https://pip.pypa.io).
+To clone and run, you'll need [Git](https://git-scm.com), [Python v3.8](https://www.python.org) and [PIP](https://pip.pypa.io).
 
 ```console
 # Clone the repository
@@ -39,6 +39,9 @@ $ python3 minimalistic-icons/main.py "#d65e3a" 🐾 --file dog.png
 - [x] Add twemoji support and emoji parameter.
 - [x] Create a README!
 - [ ] Add circle cropping.
+- [ ] Add custom image sizes.
+- [ ] Add better installation, using PIP with Github url.
+- [ ] Add text support.
 - [ ] Add an example icon in the README.
 - [ ] Add typings using [mypy](http://mypy-lang.org).
 - [ ] Add [setuptools](https://setuptools.pypa.io).
