@@ -38,8 +38,9 @@ $ python3 minimalistic-icons/main.py "#d65e3a" 🐾 --file dog.png
 - [x] Add solid image creation and color parameter.
 - [x] Add twemoji support and emoji parameter.
 - [x] Create a README!
-- [ ] Add circle cropping.
+- [x] Add circle cropping.
 - [x] Add custom image sizes.
+- [ ] Remove antialias.
 - [ ] Add better installation, using PIP with Github url.
 - [ ] Add text support.
 - [ ] Add an example icon in the README.

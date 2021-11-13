@@ -3,7 +3,7 @@
 """
 
 import click
-from PIL import Image, ImageColor
+from PIL import Image, ImageColor, ImageDraw
 import twemoji
 
 
@@ -28,12 +28,30 @@ import twemoji
               default='image.png',
               show_default=True,
               help='Output file')
-def main(color, emoji, width, height, file):
+@click.option('-c',
+              '--circle',
+              type=click.BOOL,
+              default=False,
+              show_default=True,
+              is_flag=True,
+              help='Crop image in a circle')
+# pylint: disable=too-many-arguments
+def main(color, emoji, width, height, file, circle):
     """Create a minimalistic icon"""
+
+    if circle and width != height:
+        raise click.UsageError(
+            'Cropping image in a circle is only supported if width and height is equal.'
+        )
 
     image_color = ImageColor.getrgb(color)
 
-    image = Image.new('RGBA', (width, height), image_color)
+    image = Image.new('RGBA', (width, height),
+                      image_color if not circle else None)
+    draw = ImageDraw.Draw(image)
+
+    if circle:
+        draw.ellipse((0, 0, width, height), image_color)
 
     emoji_image_size = int(min(width, height) / 4)
 
