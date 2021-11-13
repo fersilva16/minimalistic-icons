@@ -40,13 +40,14 @@ $ python3 minimalistic-icons/main.py "#d65e3a" 🐾 --file dog.png
 - [x] Create a README!
 - [x] Add circle cropping.
 - [x] Add custom image sizes.
-- [ ] Remove antialias.
+- [ ] Add anti-aliasing.
 - [ ] Add better installation, using PIP with Github url.
 - [ ] Add text support.
 - [ ] Add an example icon in the README.
 - [ ] Add typings using [mypy](http://mypy-lang.org).
 - [ ] Add [setuptools](https://setuptools.pypa.io).
 - [x] Get emoji as SVG for better resolution.
+- [ ] Add custom emoji sizes.
 
 # Contribution
 Contributions are welcome, feel free to create a [Issue][new-issue-url] or a [Pull Request][new-pr-url]. Don't forget to give the project a star! Thanks!
