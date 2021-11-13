@@ -13,8 +13,6 @@ import twemoji
 @click.option('-s',
               '--size',
               type=click.INT,
-              default=512,
-              show_default=True,
               help='The size of image. Overrides `width` and `height` options.'
               )
 @click.option('-w',
