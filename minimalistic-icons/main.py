@@ -10,6 +10,13 @@ import twemoji
 @click.command()
 @click.argument('color', type=click.STRING, required=True)
 @click.argument('emoji', type=click.STRING)
+@click.option('-s',
+              '--size',
+              type=click.INT,
+              default=512,
+              show_default=True,
+              help='The size of image. Overrides `width` and `height` options.'
+              )
 @click.option('-w',
               '--width',
               type=click.INT,
@@ -36,8 +43,12 @@ import twemoji
               is_flag=True,
               help='Crop image in a circle')
 # pylint: disable=too-many-arguments
-def main(color, emoji, width, height, file, circle):
+def main(color, emoji, size, width, height, file, circle):
     """Create a minimalistic icon"""
+
+    if size:
+        width = size
+        height = size
 
     if circle and width != height:
         raise click.UsageError(

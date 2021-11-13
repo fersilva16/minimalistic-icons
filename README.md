@@ -48,6 +48,7 @@ $ python3 minimalistic-icons/main.py "#d65e3a" 🐾 --file dog.png
 - [ ] Add [setuptools](https://setuptools.pypa.io).
 - [x] Get emoji as SVG for better resolution.
 - [ ] Add custom emoji sizes.
+- [ ] Add border radius option.
 
 # Contribution
 Contributions are welcome, feel free to create a [Issue][new-issue-url] or a [Pull Request][new-pr-url]. Don't forget to give the project a star! Thanks!
