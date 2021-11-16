@@ -39,14 +39,20 @@ import twemoji
               default=False,
               show_default=True,
               is_flag=True,
-              help='Crop image in a circle.')
+              help='Crop image in a circle. Override `border` option.')
 @click.option('--antialias',
               type=click.INT,
               default=1,
               show_default=True,
               help='Anti-aliasing factor, `1` for disabled.')
+@click.option('-b',
+              '--border',
+              type=click.INT,
+              default=0,
+              show_default=True,
+              help='Border size, `0` for disabled.')
 # pylint: disable=too-many-arguments
-def main(color, emoji, size, width, height, output, circle, antialias):
+def main(color, emoji, size, width, height, output, circle, antialias, border):
     """Create a minimalistic icon"""
 
     if size:
@@ -64,12 +70,16 @@ def main(color, emoji, size, width, height, output, circle, antialias):
 
     background_color = ImageColor.getrgb(color)
 
-    background = Image.new('RGBA', (width, height),
-                           background_color if not circle else None)
+    background = Image.new('RGBA', (width, height))
     background_draw = ImageDraw.Draw(background)
 
     if circle:
         background_draw.ellipse((0, 0, width, height), background_color)
+    elif border > 0:
+        background_draw.rounded_rectangle((0, 0, width, height), border,
+                                          background_color)
+    else:
+        background_draw.rectangle((0, 0, width, height), background_color)
 
     foreground = Image.new('RGBA', background.size)
 
