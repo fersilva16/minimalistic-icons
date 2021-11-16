@@ -27,21 +27,21 @@ import twemoji
               default=512,
               show_default=True,
               help='The height of image.')
-@click.option('-f',
-              '--file',
+@click.option('-o',
+              '--output',
               type=click.STRING,
-              default='image.png',
+              default='output.png',
               show_default=True,
-              help='Output file')
+              help='Output file path.')
 @click.option('-c',
               '--circle',
               type=click.BOOL,
               default=False,
               show_default=True,
               is_flag=True,
-              help='Crop image in a circle')
+              help='Crop image in a circle.')
 # pylint: disable=too-many-arguments
-def main(color, emoji, size, width, height, file, circle):
+def main(color, emoji, size, width, height, output, circle):
     """Create a minimalistic icon"""
 
     if size:
@@ -74,7 +74,7 @@ def main(color, emoji, size, width, height, file, circle):
 
     image = Image.alpha_composite(background, foreground)
 
-    image.save(file)
+    image.save(output)
 
     click.echo('Image created')
 
