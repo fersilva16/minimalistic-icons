@@ -1,3 +1,15 @@
+<div style="display: flex; flex-flow: row nowrap; align-items: center;">
+  <a href="https://github.com/fersilva16/minimalistic-icons/tree/master/examples/beer.png">
+    <img src="examples/beer.png" alt="Beer">
+  </a>
+  <a href="https://github.com/fersilva16/minimalistic-icons/tree/master/examples/boom.png">
+    <img src="examples/boom.png" alt="Boom">
+  </a>
+  <a href="https://github.com/fersilva16/minimalistic-icons/tree/master/examples/majhong.png">
+    <img src="examples/majhong.png" alt="Majhong">
+  </a>
+</div>
+
 # Minimalistic Icons [![MIT License][license-shield]][license-url] [![Twitter][twitter-shield]][twitter-url]
 `minimalistic-icons` is a simple Command Line Interface for creating icons using [Twitter emojis](https://twemoji.twitter.com) and colored backgrounds, written using Python, [PIL](https://pillow.readthedocs.io) and [click](https://click.palletsprojects.com)!
 
@@ -43,7 +55,7 @@ $ python3 minimalistic-icons/main.py "#d65e3a" 🐾 --file dog.png
 - [ ] Add anti-aliasing.
 - [ ] Add better installation, using PIP with Github url.
 - [ ] Add text support.
-- [ ] Add an example icon in the README.
+- [x] Add an example icon in the README.
 - [ ] Add typings using [mypy](http://mypy-lang.org).
 - [ ] Add [setuptools](https://setuptools.pypa.io).
 - [x] Get emoji as SVG for better resolution.
