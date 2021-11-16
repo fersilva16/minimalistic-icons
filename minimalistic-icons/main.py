@@ -53,22 +53,26 @@ def main(color, emoji, size, width, height, file, circle):
             'Cropping image in a circle is only supported if width and height is equal.'
         )
 
-    image_color = ImageColor.getrgb(color)
+    background_color = ImageColor.getrgb(color)
 
-    image = Image.new('RGBA', (width, height),
-                      image_color if not circle else None)
-    draw = ImageDraw.Draw(image)
+    background = Image.new('RGBA', (width, height),
+                           background_color if not circle else None)
+    background_draw = ImageDraw.Draw(background)
 
     if circle:
-        draw.ellipse((0, 0, width, height), image_color)
+        background_draw.ellipse((0, 0, width, height), background_color)
 
-    emoji_image_size = int(min(width, height) / 4)
+    foreground = Image.new('RGBA', background.size)
 
-    emoji_image = twemoji.get_emoji_image(emoji, emoji_image_size)
+    emoji_image = twemoji.get_emoji_image(emoji, int(min(width, height) / 4))
 
-    image.paste(emoji_image, (int(width / 2 - emoji_image_size / 2),
-                              int(height / 2 - emoji_image_size / 2)),
-                mask=emoji_image.split()[3])
+    foreground.paste(
+        emoji_image,
+        tuple(
+            int(background_dim / 2 - emoji_dim / 2) for background_dim,
+            emoji_dim in zip(foreground.size, emoji_image.size)))
+
+    image = Image.alpha_composite(background, foreground)
 
     image.save(file)
 
