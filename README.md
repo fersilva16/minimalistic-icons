@@ -32,11 +32,11 @@ $ python3 minimalistic-icons/main.py --help
 # Create an icon, it will create an image called `image.png`
 $ python3 minimalistic-icons/main.py "#33d690" 👽
 
-# Create an icon with custom size, you can use the alias `-s`
+# Create an icon with custom size, you can use the alias `-s` or `-w`/`--width` and `-h`/`--height`
 $ python3 minimalistic-icons/main.py "#9833d6" 🦴 --size 1024
 
-# Create an icon with custom filename, you can use the alias `-f`
-$ python3 minimalistic-icons/main.py "#d65e3a" 🐾 --file dog.png
+# Create an icon with custom filename, you can use the alias `-o`
+$ python3 minimalistic-icons/main.py "#d65e3a" 🐾 --output dog.png
 ```
 
 # Roadmap
