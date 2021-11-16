@@ -40,13 +40,22 @@ import twemoji
               show_default=True,
               is_flag=True,
               help='Crop image in a circle.')
+@click.option('--antialias',
+              type=click.INT,
+              default=1,
+              show_default=True,
+              help='Anti-aliasing factor, `1` for disabled.')
 # pylint: disable=too-many-arguments
-def main(color, emoji, size, width, height, output, circle):
+def main(color, emoji, size, width, height, output, circle, antialias):
     """Create a minimalistic icon"""
 
     if size:
         width = size
         height = size
+
+    if antialias > 1:
+        width = width * antialias
+        height = height * antialias
 
     if circle and width != height:
         raise click.UsageError(
@@ -73,6 +82,9 @@ def main(color, emoji, size, width, height, output, circle):
             emoji_dim in zip(foreground.size, emoji_image.size)))
 
     image = Image.alpha_composite(background, foreground)
+
+    image = image.resize((dimension // antialias for dimension in image.size),
+                         Image.LANCZOS)
 
     image.save(output)
 

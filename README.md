@@ -46,7 +46,7 @@ $ python3 minimalistic-icons/main.py "#d65e3a" 🐾 --output dog.png
 - [x] Create a README!
 - [x] Add circle cropping.
 - [x] Add custom image sizes.
-- [ ] Add anti-aliasing.
+- [x] Add anti-aliasing.
 - [ ] Add better installation, using PIP with Github url.
 - [ ] Add text support.
 - [x] Add an example icon in the README.
