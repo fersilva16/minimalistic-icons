@@ -1,13 +1,7 @@
 <div align="center">
-  <a href="https://github.com/fersilva16/minimalistic-icons/tree/master/examples/beer.png">
     <img src="examples/beer.png" alt="Beer" width="256" height="256">
-  </a>
-  <a href="https://github.com/fersilva16/minimalistic-icons/tree/master/examples/boom.png">
     <img src="examples/boom.png" alt="Boom" width="256" height="256">
-  </a>
-  <a href="https://github.com/fersilva16/minimalistic-icons/tree/master/examples/majhong.png">
     <img src="examples/majhong.png" alt="Majhong" width="256" height="256">
-  </a>
 </div>
 
 # Minimalistic Icons [![MIT License][license-shield]][license-url] [![Twitter][twitter-shield]][twitter-url]
