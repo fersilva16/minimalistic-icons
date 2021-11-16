@@ -53,7 +53,7 @@ $ python3 minimalistic-icons/main.py "#d65e3a" 🐾 --output dog.png
 - [ ] Add typings using [mypy](http://mypy-lang.org).
 - [ ] Add [setuptools](https://setuptools.pypa.io).
 - [x] Get emoji as SVG for better resolution.
-- [ ] Add custom emoji sizes.
+- [x] Add custom emoji sizes.
 - [x] Add border radius option.
 
 # Contribution

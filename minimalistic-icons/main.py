@@ -1,3 +1,4 @@
+# pylint: disable=too-many-locals
 """
     Minimalistic Icons
 """
@@ -51,8 +52,12 @@ import twemoji
               default=0,
               show_default=True,
               help='Border size, `0` for disabled.')
+@click.option('--emoji-size',
+              type=click.INT,
+              help='Emoji size, default is `1/4` of image size.')
 # pylint: disable=too-many-arguments
-def main(color, emoji, size, width, height, output, circle, antialias, border):
+def main(color, emoji, size, width, height, output, circle, antialias, border,
+         emoji_size):
     """Create a minimalistic icon"""
 
     if size:
@@ -83,13 +88,14 @@ def main(color, emoji, size, width, height, output, circle, antialias, border):
 
     foreground = Image.new('RGBA', background.size)
 
-    emoji_image = twemoji.get_emoji_image(emoji, int(min(width, height) / 4))
+    emoji_image = twemoji.get_emoji_image(
+        emoji,
+        emoji_size if emoji_size is not None else min(width, height) // 4)
 
     foreground.paste(
         emoji_image,
-        tuple(
-            int(background_dim / 2 - emoji_dim / 2) for background_dim,
-            emoji_dim in zip(foreground.size, emoji_image.size)))
+        tuple(background_dim // 2 - emoji_dim // 2 for background_dim,
+              emoji_dim in zip(foreground.size, emoji_image.size)))
 
     image = Image.alpha_composite(background, foreground)
 
